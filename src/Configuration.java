@@ -8,7 +8,7 @@ public class Configuration {
 	}
 	
 	public boolean getTweetLogin() {
-		return config.getBoolean("tweetLogin", false);
+		return config.getBoolean("tweetLogin", true);
 	}
 	
 	public boolean getTweetDisconnect() {
@@ -45,6 +45,17 @@ public class Configuration {
 	}
 	
 	public String getTweetDeathMessage() {
-		return config.getString("tweetLoginMessage", "{player} died in Minecraft");
+		return config.getString("tweetDeathMessage", "{player} died in Minecraft");
+	}
+	
+	// Twitter access tokens
+	public final String pleaseRegister = "See README to connect to Twitter";
+	
+	public String getAccessToken() {
+		return config.getString("accessToken", pleaseRegister);
+	}
+	
+	public String getAccessTokenSecret() {
+		return config.getString("accessTokenSecret", pleaseRegister);
 	}
 }
