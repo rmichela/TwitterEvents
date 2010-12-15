@@ -1,0 +1,73 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<< O V E R V I E W >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+TwitterEvents adds Twitter integration to the hMod Minecraft server.
+
+TwitterEvents can tweet the following events (with customizable messages):
+* Player login
+* Player logout
+* Player death
+* Player kick
+* Player ban
+
+<<<<<<<<<<<<<<<<<<<<<<<<< I N S T A L L A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+=== Copy Files
+1. Unzip the TwitterEvents.zip file.
+2. Copy twitter4j-core-2.1.9-SNAPSHOT.jar to your hMod bin directory
+3. Copy TwitterEvents.jar to your hMod plugins directory
+4. Add a reference to TwitterEvents to the plugins line of your
+   server.properties file
+
+=== Register With Twitter
+5. In your command line, navigate to your hMod bin directory
+6. Execute this command exactly: 
+   java -cp twitter4j-core-2.1.9-SNAPSHOT.jar:plugins/TwitterEvents.jar Register
+7. Follow the instructions of the Register program
+   - Go to the Twitter URL it directs you to
+   - Click the Allow button
+   - Copy the PIN provided by Twitter
+   - Paste the PIN at the prompt in the Register program
+   - Verify that TwitterEvents.properties was created in your hMod bin directory
+   
+=== Load and customize the plugin
+8. Load TwitterEvents by restarting your server or with a loadplugin command
+9. Once the plugin is loaded, it will fill in the rest of its properties
+   in the TwitterEvents.properties file
+10.You can now change which messages TwitterEvents tweets by editing the
+   .properties file
+   
+* Note: If for some reason you need to issue TwitterEvents a new oAuth keypair,
+  you must disable the hModEvents application in your Twitter settings.
+
+<<<<<<<<<<<<<<<<<<<<<<<<< C O N F I G U R A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>
+
+The TwitterEvents.properties file has the following parameters:
+
+* accessToken/accessTokenSecret -- text
+- Your Twitter oAuth keypair used for authenticating with Twitter
+
+* tweetLogin
+  tweetDisconnect
+  tweetBan
+  tweetKick
+  tweetDeath 
+- Enables or disables tweets -- T/F (default False)
+
+
+* tweetLoginMessage
+  tweetDisconnectMessage
+  tweetBanMessage
+  tweetKickMessage
+  tweetDeathMessage
+- The messages to tweet for a given event -- text
+
+* Note: Message parameters use {player}, {moderator}, and {reason} as template fields.
+  These strings will be replaced with their relevant data at runtime.
+  
+<<<<<<<<<<<<<<<<<<<<<<<<<<<< C O N T A C T >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+TwitterEvents is written by Ryan Michela (deltahat@gmail.com)
+
+Additional code by:
+Shaun (sturmeh) - SuperPlugin.java
+Yusuke Yamamoto - Twitter4J (twitter4j.org)
