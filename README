@@ -9,6 +9,10 @@ TwitterEvents can tweet the following events (with customizable messages):
 * Player kick
 * Player ban
 
+Q. Why do my servers tweets have random numbers at the end?
+A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
+   tweets. The random numbers are there to defeat the duplicate detection.
+
 <<<<<<<<<<<<<<<<<<<<<<<<< I N S T A L L A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 === Copy Files

@@ -13,6 +13,8 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -93,12 +95,17 @@ public class TEPluginListener extends PluginListener {
 		private String message;
 		
 		public Tweet(String message) {
-			// Trim the tweet to 140 characters or less
-			if(message.length() > 140) {
-				this.message = message.substring(0, 139);
+			// Trim the tweet to 134 characters or less
+			if(message.length() > 134) {
+				this.message = message.substring(0, 133);
 			} else {
 				this.message = message;
 			}
+			
+			// Add anti-dup suffix
+			Calendar c = Calendar.getInstance();
+			int s = c.get(Calendar.HOUR_OF_DAY) * c.get(Calendar.MINUTE) * c.get(Calendar.SECOND);
+			this.message += " " + s;
 		}
 		
 		

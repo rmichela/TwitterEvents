@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -84,7 +85,7 @@ public final class Register {
                     System.exit(-1);
                 }
             }
-            twitter.updateStatus("Hello from your Minecraft server");
+            twitter.updateStatus("Hello from your Minecraft server at " + (new Date()).toString() );
             System.out.println("Successfully connected to Twitter.");
             
             // Write the properties file
