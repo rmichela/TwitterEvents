@@ -17,7 +17,7 @@ A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
 
 === Copy Files
 1. Unzip the TwitterEvents.zip file.
-2. Copy twitter4j-core-2.1.9-SNAPSHOT.jar to your hMod bin directory
+2. Copy twitter4j-core-2.1.9-SNAPSHOT.jar to your hMod plugins directory
 3. Copy TwitterEvents.jar to your hMod plugins directory
 4. Add a reference to TwitterEvents to the plugins line of your
    server.properties file
