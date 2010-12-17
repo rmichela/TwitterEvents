@@ -15,7 +15,6 @@
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
@@ -48,7 +47,7 @@ public class UpdatrWriter {
 				} while (read == BUF_LEN);
 				fw.close();
 				
-			} catch(IOException e) {
+			} catch(Exception e) {
 				
 			}
 		}

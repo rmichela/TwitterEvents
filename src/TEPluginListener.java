@@ -98,6 +98,34 @@ public class TEPluginListener extends PluginListener {
 		t.run();
 	}
 	
+	@Override
+	public boolean onCommand(Player player, String[] split) {
+		
+		if(split[0].equalsIgnoreCase("/tweet") && player.canUseCommand("/tweet")) {
+
+			
+			
+			StringBuilder tweet = new StringBuilder();
+			for(int i = 1; i < split.length; i++ ) {
+				tweet.append(split[i]);
+				tweet.append(" ");
+			}
+			
+			pool.execute(new Tweet(tweet.toString()));
+			
+			player.sendMessage(Colors.Red + "Tweet sent");
+			return true;
+		}
+		
+		return false;
+	}
+
+
+
+
+
+
+
 	private class Tweet implements Runnable {
 
 		private String tweetMessage;

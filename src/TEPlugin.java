@@ -26,6 +26,9 @@ public class TEPlugin extends SuperPlugin {
 		super("TwitterEvents");
 		config = new Configuration(baseConfig);
 		prls = new ArrayList<PluginRegisteredListener>();
+		
+		// Write updatr file
+		UpdatrWriter.writeUpdatrFile("TwitterEvents.updatr");
 	}
 
 	@Override
@@ -33,11 +36,11 @@ public class TEPlugin extends SuperPlugin {
 		
 		log.info("Starting TwitterEvents");
 		
-		// Write updatr file
-		UpdatrWriter.writeUpdatrFile("TwitterEvents.updatr");
-
 		if(config.getTwitterConfigured()) {
 			TEPluginListener listener = new TEPluginListener(config, log);
+			
+			// Register hMod command
+			etc.getInstance().addCommand("/tweet", " - sends a tweet on behalf of the server.");
 			
 			// Register hMod hooks
 			if(config.getTweetLogin()) {
@@ -60,6 +63,8 @@ public class TEPlugin extends SuperPlugin {
 				prls.add(etc.getLoader().addListener(PluginLoader.Hook.HEALTH_CHANGE, listener, this, PluginListener.Priority.LOW));
 				log.info("* Tweeting deaths");
 			}
+			
+			prls.add(etc.getLoader().addListener(PluginLoader.Hook.COMMAND, listener, this, PluginListener.Priority.LOW));
 		
 			if(config.getTweetServerStatus()) {
 				listener.tweet(config.getTweetPluginStartMessage());
