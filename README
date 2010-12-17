@@ -42,6 +42,11 @@ A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
    
 * Note: If for some reason you need to issue TwitterEvents a new oAuth keypair,
   you must disable the hModEvents application in your Twitter settings.
+  
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< C O M M A N D S >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+/tweet - Sends a tweet on behalf of the server. Must be granted to users or
+         groups before use.
 
 <<<<<<<<<<<<<<<<<<<<<<<<< C O N F I G U R A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -74,6 +79,13 @@ The TwitterEvents.properties file has the following parameters:
 * Note: Server stop tweets cannot be reliably be sent in the event of catistrophic
   server crash. If the server crashes unexpectedly, nothing inside the server can
   alert you.
+
+<<<<<<<<<<<<<<<<<<<<<<<<< I N T E G R A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+
+TwitterEvents registers a custom hook for integration with other plugins.
+To send a tweet from your plugin, use the callCustomHook api as follows:
+  
+etc.getLoader().callCustomHook("tweet", new Object[] {"Tweet text here"});
   
 <<<<<<<<<<<<<<<<<<<<<<<<<<<< C O N T A C T >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

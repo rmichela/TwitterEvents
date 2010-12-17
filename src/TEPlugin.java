@@ -20,7 +20,7 @@ public class TEPlugin extends SuperPlugin {
 	
 	private List<PluginRegisteredListener> prls;
 	private Configuration config;
-	ShutdownHook sdHook;
+	private ShutdownHook sdHook;
 	
 	public TEPlugin() {
 		super("TwitterEvents");
@@ -73,6 +73,9 @@ public class TEPlugin extends SuperPlugin {
 				Runtime.getRuntime().addShutdownHook(sdHook);
 			}
 			
+			// add the custom hook for external plugin integration
+			etc.getLoader().addCustomListener(new TweetCommand(listener));
+			
 			initMessagesConfig();
 		} else {
 			log.info("*** TwitterEvents is not yet registered to send tweets to Twitter! Consult the README.");
@@ -81,7 +84,7 @@ public class TEPlugin extends SuperPlugin {
 
 	@Override
 	public void disableExtra() {
-		log.warning("Stopping TwitterEvents");
+		log.info("Stopping TwitterEvents");
 		
 		// Unregister hMod hooks
 		for(PluginRegisteredListener psr : prls) {
@@ -89,10 +92,14 @@ public class TEPlugin extends SuperPlugin {
 		}
 		prls = new ArrayList<PluginRegisteredListener>();
 		
-		// Clear the shutdown hook
-		if(sdHook != null) {
+		
+		if(config.getTwitterConfigured()) {
+			// Clear the shutdown hook
 			Runtime.getRuntime().removeShutdownHook(sdHook);
 			sdHook = null;
+			
+			// Clear the custom listener
+			etc.getLoader().removeCustomListener(TweetCommand.commandName);
 		}
 	}
 	
