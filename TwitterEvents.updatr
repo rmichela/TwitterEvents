@@ -1,5 +1,5 @@
 name = TwitterEvents
 version = 0.2
-url = https://github.com/rmichela/TwitterEvents/blob/master/TwitterEvents.updatr
+url = https://github.com/rmichela/TwitterEvents/raw/master/TwitterEvents.updatr
 file = https://github.com/downloads/rmichela/TwitterEvents/TwitterEvents.jar
 notes = Now with Updatr support!
