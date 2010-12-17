@@ -14,7 +14,6 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
@@ -90,22 +89,33 @@ public class TEPluginListener extends PluginListener {
 		super.finalize();
 	}
 	
+	public void tweet(String message) {
+		pool.execute(new Tweet(message));
+	}
+	
+	public void forceTweet(String message) {
+		Tweet t = new Tweet(message);
+		t.run();
+	}
+	
 	private class Tweet implements Runnable {
 
-		private String message;
+		private String tweetMessage;
 		
 		public Tweet(String message) {
 			// Trim the tweet to 134 characters or less
 			if(message.length() > 134) {
-				this.message = message.substring(0, 133);
+				tweetMessage = message.substring(0, 133);
 			} else {
-				this.message = message;
+				tweetMessage = message;
 			}
 			
 			// Add anti-dup suffix
 			Calendar c = Calendar.getInstance();
-			int s = c.get(Calendar.HOUR_OF_DAY) * c.get(Calendar.MINUTE) * c.get(Calendar.SECOND);
-			this.message += " " + s;
+			int s = c.get(Calendar.HOUR_OF_DAY) * 60 * 60 + 
+			        c.get(Calendar.MINUTE) * 60 + 
+			        c.get(Calendar.SECOND);
+			tweetMessage += " " + s;
 		}
 		
 		
@@ -119,7 +129,7 @@ public class TEPluginListener extends PluginListener {
 		    	  .setOAuthConsumerKey("wIb1qVNc0CNXQJxduYIXw")
 		    	  .setOAuthConsumerSecret("vTES3U9862wYaxFRdMyD1LRatkq2R42mDyOjXLHIdk");
 		    	Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-		    	twitter.updateStatus(message);
+		    	twitter.updateStatus(tweetMessage);
 			} catch(TwitterException e) {
 				log.warning("TwitterEvents: Error sending tweet - " + e.getMessage());
 			}

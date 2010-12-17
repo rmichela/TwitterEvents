@@ -50,12 +50,13 @@ The TwitterEvents.properties file has the following parameters:
 * accessToken/accessTokenSecret -- text
 - Your Twitter oAuth keypair used for authenticating with Twitter
 
-* tweetLogin
+* tweetLogin (True)
   tweetDisconnect
   tweetBan
   tweetKick
   tweetDeath 
-- Enables or disables tweets -- T/F (default False)
+  tweetServerStatus (True)
+- Enables or disables individual tweets -- T/F (default False)
 
 
 * tweetLoginMessage
@@ -63,10 +64,16 @@ The TwitterEvents.properties file has the following parameters:
   tweetBanMessage
   tweetKickMessage
   tweetDeathMessage
+  tweetPluginStartMessage
+  tweetPluginStopMessage
 - The messages to tweet for a given event -- text
 
 * Note: Message parameters use {player}, {moderator}, and {reason} as template fields.
   These strings will be replaced with their relevant data at runtime.
+  
+* Note: Server stop tweets cannot be reliably be sent in the event of catistrophic
+  server crash. If the server crashes unexpectedly, nothing inside the server can
+  alert you.
   
 <<<<<<<<<<<<<<<<<<<<<<<<<<<< C O N T A C T >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

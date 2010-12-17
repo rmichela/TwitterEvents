@@ -41,6 +41,10 @@ public class Configuration {
 		return config.getBoolean("tweetDeath", false);
 	}
 	
+	public boolean getTweetServerStatus() {
+		return config.getBoolean("tweetServerStatus", true);
+	}
+	
 	// Tweet message configs
 	public String getTweetLoginMessage() {
 		return config.getString("tweetLoginMessage", "{player} has logged into Minecraft");
@@ -62,6 +66,14 @@ public class Configuration {
 		return config.getString("tweetDeathMessage", "{player} died in Minecraft");
 	}
 	
+	public String getTweetPluginStartMessage() {
+		return config.getString("tweetPluginStartMessage", "The Minecraft server has started");
+	}
+	
+	public String getTweetPluginStopMessage() {
+		return config.getString("tweetPluginStopMessage", "The Minecraft server has stopped");
+	}
+	
 	// Twitter access tokens
 	public final String pleaseRegister = "See README to connect to Twitter";
 	
@@ -71,5 +83,9 @@ public class Configuration {
 	
 	public String getAccessTokenSecret() {
 		return config.getString("accessTokenSecret", pleaseRegister);
+	}
+	
+	public boolean getTwitterConfigured() {
+		return getAccessToken() != pleaseRegister && getAccessTokenSecret() != pleaseRegister;
 	}
 }

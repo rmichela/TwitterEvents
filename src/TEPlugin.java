@@ -20,6 +20,7 @@ public class TEPlugin extends SuperPlugin {
 	
 	private List<PluginRegisteredListener> prls;
 	private Configuration config;
+	ShutdownHook sdHook;
 	
 	public TEPlugin() {
 		super("TwitterEvents");
@@ -34,11 +35,8 @@ public class TEPlugin extends SuperPlugin {
 		
 		// Write updatr file
 		UpdatrWriter.writeUpdatrFile("TwitterEvents.updatr");
-			
-		String accessToken = config.getAccessToken();
-		String accessTokenSecret = config.getAccessTokenSecret();
-		
-		if(accessToken != config.pleaseRegister && accessTokenSecret != config.pleaseRegister) {
+
+		if(config.getTwitterConfigured()) {
 			TEPluginListener listener = new TEPluginListener(config, log);
 			
 			// Register hMod hooks
@@ -62,6 +60,13 @@ public class TEPlugin extends SuperPlugin {
 				prls.add(etc.getLoader().addListener(PluginLoader.Hook.HEALTH_CHANGE, listener, this, PluginListener.Priority.LOW));
 				log.info("* Tweeting deaths");
 			}
+		
+			if(config.getTweetServerStatus()) {
+				listener.tweet(config.getTweetPluginStartMessage());
+				// Set the shutdown hook
+				sdHook = new ShutdownHook(listener);
+				Runtime.getRuntime().addShutdownHook(sdHook);
+			}
 			
 			initMessagesConfig();
 		} else {
@@ -78,6 +83,12 @@ public class TEPlugin extends SuperPlugin {
 			etc.getLoader().removeListener(psr);
 		}
 		prls = new ArrayList<PluginRegisteredListener>();
+		
+		// Clear the shutdown hook
+		if(sdHook != null) {
+			Runtime.getRuntime().removeShutdownHook(sdHook);
+			sdHook = null;
+		}
 	}
 	
 	private void initMessagesConfig() {
@@ -85,7 +96,19 @@ public class TEPlugin extends SuperPlugin {
 		config.getTweetDisconnectMessage();
 		config.getTweetBanMessage();
 		config.getTweetKickMessage();
-		config.getTweetDeathMessage();
-		baseConfig.save();		
+		config.getTweetDeathMessage();	
+	}
+	
+	private class ShutdownHook extends Thread {
+		
+		private TEPluginListener listener;
+		
+		public ShutdownHook(TEPluginListener l) {
+			listener = l;
+		}
+		
+		public void run() { 
+			listener.forceTweet(config.getTweetPluginStopMessage());
+		}
 	}
 }
