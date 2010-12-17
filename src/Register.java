@@ -89,7 +89,7 @@ public final class Register {
             System.out.println("Successfully connected to Twitter.");
             
             // Write the properties file
-            PrintWriter pw = new PrintWriter(new FileWriter("../TwitterEvents.properties"));
+            PrintWriter pw = new PrintWriter(new FileWriter("TwitterEvents.properties"));
             pw.println("accessToken=" + accessToken.getToken());
             pw.println("accessTokenSecret=" + accessToken.getTokenSecret());
             pw.close();
