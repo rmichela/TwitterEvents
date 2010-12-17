@@ -31,6 +31,9 @@ public class TEPlugin extends SuperPlugin {
 	public void enableExtra() {
 		
 		log.info("Starting TwitterEvents");
+		
+		// Write updatr file
+		UpdatrWriter.writeUpdatrFile("TwitterEvents.updatr");
 			
 		String accessToken = config.getAccessToken();
 		String accessTokenSecret = config.getAccessTokenSecret();
