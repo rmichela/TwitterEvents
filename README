@@ -25,7 +25,7 @@ A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
 === Register With Twitter
 5. In your command line, navigate to your hMod plugins directory
 6. Execute this command exactly: 
-   java -cp twitter4j-core-2.1.9-SNAPSHOT.jar:TwitterEvents.jar Register
+   java -jar TwitterEvents.jar
 7. Follow the instructions of the Register program
    - Go to the Twitter URL it directs you to
    - Click the Allow button
@@ -46,7 +46,8 @@ A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< C O M M A N D S >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 /tweet - Sends a tweet on behalf of the server. Must be granted to users or
-         groups before use.
+         groups before use. (Can also be run from the console.)
+         
 
 <<<<<<<<<<<<<<<<<<<<<<<<< C O N F I G U R A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>
 

@@ -89,13 +89,15 @@ public final class Register {
             System.out.println("Successfully connected to Twitter.");
             
             // Write the properties file
-            PrintWriter pw = new PrintWriter(new FileWriter("TwitterEvents.properties"));
+            PrintWriter pw = new PrintWriter(new FileWriter("../TwitterEvents.properties"));
             pw.println("accessToken=" + accessToken.getToken());
             pw.println("accessTokenSecret=" + accessToken.getTokenSecret());
             pw.close();
             
             
             System.out.println("Your TwitterEvents.properties file has been created with your access tokens.");
+            System.out.println("Start Minecraft server to load the remaining default values.");
+            System.out.println("Then reload TwitterEvents if you make any changes.");
             System.exit(0);
         } catch (TwitterException te) {
             System.out.println("Failed to get timeline: " + te.getMessage());
