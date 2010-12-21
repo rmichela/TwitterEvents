@@ -102,17 +102,7 @@ public class TEPluginListener extends PluginListener {
 	public boolean onCommand(Player player, String[] split) {
 		
 		if(split[0].equalsIgnoreCase("/tweet") && player.canUseCommand("/tweet")) {
-
-			
-			
-			StringBuilder tweet = new StringBuilder();
-			for(int i = 1; i < split.length; i++ ) {
-				tweet.append(split[i]);
-				tweet.append(" ");
-			}
-			
-			pool.execute(new Tweet(tweet.toString()));
-			
+			tweet(split);
 			player.sendMessage(Colors.Red + "Tweet sent");
 			return true;
 		}
@@ -121,6 +111,26 @@ public class TEPluginListener extends PluginListener {
 	}
 
 
+	@Override
+	public boolean onConsoleCommand(String[] split) {
+		if(split[0].equalsIgnoreCase("/tweet") ) {
+			tweet(split);
+			return true;
+		}
+		
+		return false;
+	}
+
+	// Send a tweet, used by commands
+	private void tweet(String[] split) {
+		StringBuilder tweet = new StringBuilder();
+		for(int i = 1; i < split.length; i++ ) {
+			tweet.append(split[i]);
+			tweet.append(" ");
+		}
+		
+		pool.execute(new Tweet(tweet.toString()));
+	}
 
 
 

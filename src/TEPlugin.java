@@ -65,6 +65,7 @@ public class TEPlugin extends SuperPlugin {
 			}
 			
 			prls.add(etc.getLoader().addListener(PluginLoader.Hook.COMMAND, listener, this, PluginListener.Priority.LOW));
+			prls.add(etc.getLoader().addListener(PluginLoader.Hook.SERVERCOMMAND, listener, this, PluginListener.Priority.LOW));
 		
 			if(config.getTweetServerStatus()) {
 				listener.tweet(config.getTweetPluginStartMessage());
