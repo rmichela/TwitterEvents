@@ -141,18 +141,18 @@ public class TEPluginListener extends PluginListener {
 		private String tweetMessage;
 		
 		public Tweet(String message) {
-			// Trim the tweet to 134 characters or less
-			if(message.length() > 134) {
-				tweetMessage = message.substring(0, 133);
+			// Trim the tweet to 129 characters or less
+			if(message.length() > 129) {
+				tweetMessage = message.substring(0, 128);
 			} else {
 				tweetMessage = message;
 			}
 			
 			// Add anti-dup suffix
 			Calendar c = Calendar.getInstance();
-			int s = c.get(Calendar.HOUR_OF_DAY) * 60 * 60 + 
-			        c.get(Calendar.MINUTE) * 60 + 
-			        c.get(Calendar.SECOND);
+			String s = "(" + c.get(Calendar.HOUR_OF_DAY) + ":" +
+			           c.get(Calendar.MINUTE) + ":" +
+			        c.get(Calendar.SECOND) + ")";
 			tweetMessage += " " + s;
 		}
 		
