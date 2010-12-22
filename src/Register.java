@@ -85,7 +85,7 @@ public final class Register {
                     System.exit(-1);
                 }
             }
-            twitter.updateStatus("Hello from your Minecraft server at " + (new Date()).toString() );
+            twitter.updateStatus("Minecraft server successfully registered at " + (new Date()).toString() );
             System.out.println("Successfully connected to Twitter.");
             
             // Write the properties file

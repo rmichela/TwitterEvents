@@ -113,8 +113,9 @@ public class TEPluginListener extends PluginListener {
 
 	@Override
 	public boolean onConsoleCommand(String[] split) {
-		if(split[0].equalsIgnoreCase("/tweet") ) {
+		if(split[0].equalsIgnoreCase("tweet") ) {
 			tweet(split);
+			log.info("Tweet sent");
 			return true;
 		}
 		

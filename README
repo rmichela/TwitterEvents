@@ -9,10 +9,6 @@ TwitterEvents can tweet the following events (with customizable messages):
 * Player kick
 * Player ban
 
-Q. Why do my servers tweets have random numbers at the end?
-A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
-   tweets. The random numbers are there to defeat the duplicate detection.
-
 <<<<<<<<<<<<<<<<<<<<<<<<< I N S T A L L A T I O N >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 === Copy Files
@@ -42,6 +38,19 @@ A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
    
 * Note: If for some reason you need to issue TwitterEvents a new oAuth keypair,
   you must disable the hModEvents application in your Twitter settings.
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< F A Q s >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Q. Why do my servers tweets have random numbers at the end?
+A. Twiter blocks duplicate tweets. TwitterEvents makes lots of duplicate
+   tweets. The timestamps at the end of the tweet are there to defeat the 
+   duplicate tweet detection.
+   
+Q. Why do I get class not found errors when trying to register on Vista/Win7
+   and why are the TwitterEvents .jar files green?
+A. It's a Windows bug. The .jar files are encrypted. Decrypt them with the 
+   directions here:
+   - http://www.vistax64.com/vista-general/90769-green-filenames-why.html
   
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< C O M M A N D S >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
