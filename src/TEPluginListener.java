@@ -103,7 +103,7 @@ public class TEPluginListener extends PluginListener {
 		
 		if(split[0].equalsIgnoreCase("/tweet") && player.canUseCommand("/tweet")) {
 			tweet(split);
-			player.sendMessage(Colors.Red + "Tweet sent");
+			player.sendMessage(Colors.Blue + "Tweet sent");
 			return true;
 		}
 		
